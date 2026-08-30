@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rakesh Sabbisetty — AI Engineer Portfolio</title>
+<meta name="description" content="AI Engineer. Four production AI systems with real evals, guardrails, and live deploys — RAG over SEC filings, an agentic issue-triage bot, resume screening, and an ops observability copilot.">
+<meta property="og:title" content="Rakesh Sabbisetty — AI Engineer">
+<meta property="og:description" content="Four production AI systems with real evals and live deploys.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◆</text></svg>">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --card: #14171c;
+    --card-hover: #181c22;
+    --border: #262b33;
+    --text: #e8eaed;
+    --muted: #9aa2ad;
+    --accent: #6ee7b7;
+    --accent2: #7dd3fc;
+    --accent3: #c4b5fd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(110,231,183,0.08), transparent),
+      radial-gradient(ellipse 900px 500px at 90% 10%, rgba(125,211,252,0.07), transparent),
+      var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(11,13,16,0.75);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .brand { font-weight: 700; letter-spacing: 0.02em; }
+  nav .brand span { color: var(--accent); }
+  nav .navlinks { display: flex; gap: 1.5rem; }
+  nav .navlinks a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s;
+  }
+  nav .navlinks a:hover { color: var(--text); }
+  @media (max-width: 480px) {
+    nav { padding: 0.75rem 1rem; }
+    nav .navlinks { gap: 1rem; }
+    nav .navlinks a { font-size: 0.85rem; }
+  }
+
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent2);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  header {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .js header .eyebrow { opacity: 0; animation: rise 0.6s ease forwards; }
+  header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 1rem;
+    background: linear-gradient(90deg, var(--text), var(--accent2) 60%, var(--accent3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .js header h1 { opacity: 0; animation: rise 0.6s ease 0.1s forwards; }
+  header p.tagline {
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 0 auto;
+    font-size: 1.05rem;
+  }
+  .js header p.tagline { opacity: 0; animation: rise 0.6s ease 0.2s forwards; }
+  header .links { margin-top: 1.5rem; }
+  .js header .links { opacity: 0; animation: rise 0.6s ease 0.3s forwards; }
+  header .links a {
+    color: var(--bg);
+    background: var(--accent);
+    text-decoration: none;
+    margin: 0 0.4rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  header .links a.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  header .links a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(110,231,183,0.15); }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stats {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .stats .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 0.5rem;
+  }
+  .stats .stat .num {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent2);
+    font-variant-numeric: tabular-nums;
+  }
+  .stats .stat .label {
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+  }
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    display: grid;
+    gap: 1.5rem;
+    scroll-margin-top: 5rem;
+  }
+
+  h2.section-title {
+    font-size: 1.1rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1rem 0 0.25rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, background 0.2s;
+  }
+  .js .card { opacity: 0; transform: translateY(16px); }
+  .js .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover { border-color: rgba(110,231,183,0.35); background: var(--card-hover); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .card h3 { margin: 0; font-size: 1.3rem; }
+  .card .status-badge {
+    font-size: 0.72rem;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .card .status-badge.muted { background: var(--border); color: var(--muted); }
+
+  .card .problem {
+    color: var(--muted);
+    margin: 0.75rem 0 1rem;
+    font-style: italic;
+    border-left: 2px solid var(--accent2);
+    padding-left: 0.85rem;
+  }
+
+  .card .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+  }
+  .card .stack span {
+    background: #1c2128;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    color: var(--accent3);
+  }
+
+  .card .evals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .card .evals span {
+    background: rgba(110,231,183,0.08);
+    border: 1px solid rgba(110,231,183,0.25);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    main { padding: 0 1rem 3rem; }
+    .card { padding: 1.25rem; }
+    .card .evals span { font-size: 0.75rem; }
+  }
+
+  .card details {
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+  .card summary {
+    cursor: pointer;
+    color: var(--accent2);
+    font-size: 0.88rem;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    user-select: none;
+  }
+  .card summary::-webkit-details-marker { display: none; }
+  .card summary::marker { content: ""; }
+  .card summary::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+  .card details[open] summary::before { transform: rotate(90deg); }
+  .card .highlight-text {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0.6rem 0 0;
+  }
+
+  .card .cta { margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .card .cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .card .cta a.primary { background: var(--accent2); color: var(--bg); border-color: transparent; }
+  .card .cta a:hover { transform: translateY(-1px); border-color: var(--accent2); }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 2.5rem 1.5rem;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--accent2); text-decoration: none; }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    header h1 { color: #111; background: none; -webkit-text-fill-color: #111; }
+    header .links a.secondary { color: #111; border-color: #999; }
+    .card, .stats .stat { border-color: #ccc; break-inside: avoid; }
+    .card .problem, .card .highlight-text, .stats .stat .label, footer { color: #444; }
+    .stats .stat .num, .card .evals span, .card .stack span, .card .cta a, .card summary { color: #111; }
+    .card .status-badge, .card .status-badge.muted { color: #111; background: none; border: 1px solid #444; }
+    footer a, nav .navlinks a { color: #111; }
+    nav { position: static; }
+    details { display: block; }
+    details::details-content { content-visibility: visible !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Rakesh<span>.</span></div>
+  <div class="navlinks">
+    <a href="#work">Work</a>
+    <a href="https://github.com/rakeshsabbisetty2001" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:rakeshsabbisetty@gmail.com">Email</a>
+  </div>
+</nav>
+
+<header>
+  <div class="eyebrow">AI Engineer · Forward Deployed Engineer</div>
+  <h1>Rakesh Sabbisetty</h1>
+  <p class="tagline">Four production AI systems, built from scratch — real evals, real guardrails, real deploys. Not tutorials.</p>
+  <div class="links">
+    <a href="#work">See the work ↓</a>
+    <a class="secondary" href="mailto:rakeshsabbisetty@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<section class="stats" aria-label="Portfolio stats">
+  <div class="stat" role="img" aria-label="4 projects shipped and live">
+    <div class="num" aria-hidden="true" data-count="4">4</div>
+    <div class="label" aria-hidden="true">Projects shipped &amp; live</div>
+  </div>
+  <div class="stat" role="img" aria-label="6 live deploys, API and UI">
+    <div class="num" aria-hidden="true" data-count="6">6</div>
+    <div class="label" aria-hidden="true">Live deploys (API + UI)</div>
+  </div>
+  <div class="stat" role="img" aria-label="400 plus automated tests written">
+    <div class="num" aria-hidden="true" data-count="400" data-suffix="+">400+</div>
+    <div class="label" aria-hidden="true">Automated tests written</div>
+  </div>
+  <div class="stat" role="img" aria-label="27 adversarial injection cases, 0 leaks">
+    <div class="num" aria-hidden="true" data-count="27">27</div>
+    <div class="label" aria-hidden="true">Adversarial cases, 0 leaks</div>
+  </div>
+</section>
+
+<main id="work">
+  <h2 class="section-title">Projects</h2>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>AI Ops Observability Copilot</h3>
+      <span class="status-badge">Live</span>
+    </div>
+    <p class="problem">"Ask our logs and metrics a question in plain English, and catch anomalies before customers do."</p>
+    <div class="stack">
+      <span>Python</span><span>FastAPI</span><span>Text-to-SQL + guardrail</span><span>Anomaly detection</span><span>Docker</span>
+    </div>
+    <div class="evals">
+      <span>100% execution-match (16/16)</span>
+      <span>9/9 adversarial contained</span>
+      <span>201 tests</span>
+    </div>
+    <details>
+      <summary>Engineering highlights</summary>
+      <p class="highlight-text">All 8 epics Opus-reviewed to convergence, including a 14-round loop that replaced a brittle regex guardrail with the SQL parser's own AST as the source of truth. Production hardening closed a live proxy-header rate-limit bypass, verified inside a real Docker container against the actual attack.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://ops-observability-copilot.streamlit.app" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">Live Demo ↗</a>
+      <a href="https://github.com/rakeshsabbisetty2001/ops-observability-copilot" target="_blank" rel="noopener">Source ↗</a>
+      <a href="https://ops-observability-copilot.onrender.com" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">API ↗</a>
+    </div>
+    <p class="highlight-text">Demos are free-tier hosted — first load may take ~30s to wake.</p>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>SEC Filings RAG</h3>
+      <span class="status-badge">Live</span>
+    </div>
+    <p class="problem">"I need a fast, citation-backed answer from a 10-K, not an afternoon of Ctrl+F."</p>
+    <div class="stack">
+      <span>Python</span><span>FastAPI</span><span>LlamaIndex</span><span>Claude Sonnet 5</span><span>Chroma</span>
+    </div>
+    <div class="evals">
+      <span>85% overall correct (17/20)</span>
+      <span>4.82/5 groundedness</span>
+      <span>100% refusal precision (6/6)</span>
+      <span>80% recall@k</span>
+    </div>
+    <details>
+      <summary>Engineering highlights</summary>
+      <p class="highlight-text">Three independent Opus review loops converged on parser/citation correctness, Docker OOM-under-512MB fixes, and production hardening (unbounded-body DoS, spoofable rate limiter). Eval set includes a dedicated prompt-injection question — caught cleanly.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://sec-filings-rag-ulvfrzyy9p787mtaysr2bg.streamlit.app" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">Live Demo ↗</a>
+      <a href="https://github.com/rakeshsabbisetty2001/sec-filings-rag" target="_blank" rel="noopener">Source ↗</a>
+      <a href="https://sec-filings-rag-jmzh.onrender.com" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">API ↗</a>
+    </div>
+    <p class="highlight-text">Demos are free-tier hosted — first load may take ~30s to wake.</p>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>GitHub Issue-Triage Agent</h3>
+      <span class="status-badge muted">Scheduled agent</span>
+    </div>
+    <p class="problem">"Our issue backlog is a swamp — nobody has time to label and route every new report."</p>
+    <div class="stack">
+      <span>TypeScript</span><span>Claude Agent SDK</span><span>GitHub API</span><span>GitHub Actions</span>
+    </div>
+    <div class="evals">
+      <span>100% type accuracy, n=25 (vs 28% baseline)</span>
+      <span>72% priority accuracy</span>
+      <span>0/27 injection leaks</span>
+    </div>
+    <details>
+      <summary>Engineering highlights</summary>
+      <p class="highlight-text">Takes real actions via the GitHub API (labels + comments, deliberately no close/assign). Runs on a schedule against a live demo repo with real triaged issues. Injection-resistance eval machine-verified across 27 adversarial prompts, zero leaks.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://github.com/rakeshsabbisetty2001/issue-triage-demo/issues?q=is%3Aissue" target="_blank" rel="noopener">Live Triaged Issues ↗</a>
+      <a href="https://github.com/rakeshsabbisetty2001/github-issue-triage-agent" target="_blank" rel="noopener">Source ↗</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>Resume-Screening AI</h3>
+      <span class="status-badge">Live</span>
+    </div>
+    <p class="problem">"We need consistent, explainable resume scoring — not a black box, and not a biased one."</p>
+    <div class="stack">
+      <span>Python</span><span>FastAPI</span><span>LLM-judge rubric</span><span>Bias eval</span>
+    </div>
+    <div class="evals">
+      <span>F1 1.0 extraction (n=27)</span>
+      <span>27-case rubric eval</span>
+      <span>Bias eval, 5 job categories</span>
+    </div>
+    <details>
+      <summary>Engineering highlights</summary>
+      <p class="highlight-text">All 9 build phases Opus-reviewed to convergence. Handles real PDF/DOCX resumes (not just plain text) after a real user hit real extraction edge cases — years-of-experience tolerance was recalibrated against an actual resume, with a regression test locking in the fix.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://resume-screening-a-ljjnblec8emagdpruk4g4f.streamlit.app" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">Live Demo ↗</a>
+      <a href="https://github.com/rakeshsabbisetty2001/resume-screening-ai" target="_blank" rel="noopener">Source ↗</a>
+      <a href="https://resume-screening-ai-ebt7.onrender.com" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">API ↗</a>
+    </div>
+    <p class="highlight-text">Demos are free-tier hosted — first load may take ~30s to wake.</p>
+  </article>
+
+</main>
+
+<footer>
+  Built from scratch, evaluated with real numbers, and deployed live — not tutorials.
+  <br>
+  <a href="https://github.com/rakeshsabbisetty2001">github.com/rakeshsabbisetty2001</a> · <a href="mailto:rakeshsabbisetty@gmail.com">rakeshsabbisetty@gmail.com</a>
+</footer>
+
+<script>
+  // Scroll-reveal for project cards
+  var cards = document.querySelectorAll('.card');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(function (c) { observer.observe(c); });
+
+  // Count-up stats, once, when scrolled into view
+  var statEls = document.querySelectorAll('.stat .num');
+  var statsObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      statsObserver.unobserve(entry.target);
+      var el = entry.target;
+      var target = parseInt(el.dataset.count, 10);
+      var suffix = el.dataset.suffix || '';
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = target + suffix;
+        return;
+      }
+      el.textContent = '0' + suffix;
+      var start = null;
+      var duration = 900;
+      function step(ts) {
+        if (start === null) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        el.textContent = Math.floor(progress * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  statEls.forEach(function (el) { statsObserver.observe(el); });
+
+  // Force engineering-highlights open when printing, restore after
+  var openedForPrint = [];
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details:not([open])').forEach(function (d) {
+      d.open = true;
+      openedForPrint.push(d);
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    openedForPrint.forEach(function (d) { d.open = false; });
+    openedForPrint = [];
+  });
+</script>
+
+</body>
+</html>
