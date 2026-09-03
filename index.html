@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rakesh Sabbisetty — AI Engineer Portfolio</title>
-<meta name="description" content="AI Engineer. Four production AI systems with real evals, guardrails, and live deploys — RAG over SEC filings, an agentic issue-triage bot, resume screening, and an ops observability copilot.">
+<meta name="description" content="AI Engineer. Four production AI systems with real evals, guardrails, and live deploys — RAG over SEC filings, an agentic issue-triage bot, resume screening, and an ops observability copilot — plus an open-source MCP security red-team tool.">
 <meta property="og:title" content="Rakesh Sabbisetty — AI Engineer">
-<meta property="og:description" content="Four production AI systems with real evals and live deploys.">
+<meta property="og:description" content="Four production AI systems with real evals and live deploys, plus an open-source MCP security tool.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rakeshsabbisetty2001.github.io/portfolio/">
 <meta name="twitter:card" content="summary">
@@ -342,7 +342,7 @@
 <header>
   <div class="eyebrow">AI Engineer · Forward Deployed Engineer</div>
   <h1>Rakesh Sabbisetty</h1>
-  <p class="tagline">Four production AI systems, built from scratch — real evals, real guardrails, real deploys. Not tutorials.</p>
+  <p class="tagline">Four production AI systems, built from scratch, plus an open-source MCP security red-team tool — real evals, real guardrails, real deploys. Not tutorials.</p>
   <div class="links">
     <a href="#work">See the work ↓</a>
     <a class="secondary" href="mailto:rakeshsabbisetty@gmail.com">Get in touch</a>
@@ -350,9 +350,9 @@
 </header>
 
 <section class="stats" aria-label="Portfolio stats">
-  <div class="stat" role="img" aria-label="4 projects shipped and live">
+  <div class="stat" role="img" aria-label="4 production systems live">
     <div class="num" aria-hidden="true" data-count="4">4</div>
-    <div class="label" aria-hidden="true">Projects shipped &amp; live</div>
+    <div class="label" aria-hidden="true">Production systems live</div>
   </div>
   <div class="stat" role="img" aria-label="6 live deploys, API and UI">
     <div class="num" aria-hidden="true" data-count="6">6</div>
@@ -472,6 +472,29 @@
       <a href="https://resume-screening-ai-ebt7.onrender.com" target="_blank" rel="noopener" title="Free-tier host — first load ~30s">API ↗</a>
     </div>
     <p class="highlight-text">Demos are free-tier hosted — first load may take ~30s to wake.</p>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>mcp-xray</h3>
+      <span class="status-badge muted">CLI tool</span>
+    </div>
+    <p class="problem">"MCP tools can leak secrets or obey injected instructions — nobody's checking."</p>
+    <div class="stack">
+      <span>Python</span><span>MCP SDK</span><span>Anthropic API</span><span>GitHub Actions CI</span>
+    </div>
+    <div class="evals">
+      <span>1.00 precision/recall (calibration)</span>
+      <span>0/70 live agentic trials hijacked</span>
+      <span>18 Opus review rounds</span>
+    </div>
+    <details>
+      <summary>Engineering highlights</summary>
+      <p class="highlight-text">An agentic probe gives a real driver LLM a benign task, then measures whether it gets hijacked by a poisoned tool output — mock executor, structurally can't execute what it detects. Secrets are redacted at the point of capture, not the report writer. Caught a real bug static reading missed: an SDK parameter that didn't exist in the installed API version, crashing the first live model call.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://github.com/rakeshsabbisetty2001/mcp-xray" target="_blank" rel="noopener">Source ↗</a>
+    </div>
   </article>
 
 </main>
