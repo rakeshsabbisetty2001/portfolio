@@ -334,6 +334,7 @@
   <div class="brand">Rakesh<span>.</span></div>
   <div class="navlinks">
     <a href="#work">Work</a>
+    <a href="#writing">Writing</a>
     <a href="https://github.com/rakeshsabbisetty2001" target="_blank" rel="noopener">GitHub</a>
     <a href="mailto:rakeshsabbisetty@gmail.com">Email</a>
   </div>
@@ -495,6 +496,51 @@
     <div class="cta">
       <a class="primary" href="https://github.com/rakeshsabbisetty2001/mcp-xray" target="_blank" rel="noopener">Source ↗</a>
     </div>
+  </article>
+
+  <h2 class="section-title" id="writing" style="scroll-margin-top: 5rem">Writing</h2>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>Limiting prompt injection in a GitHub agent that writes</h3>
+      <span class="status-badge muted">Walkthrough</span>
+    </div>
+    <p class="problem">For developers building agents that act on input they don't control.</p>
+    <p class="highlight-text">How I limited what a hijacked model can do in the issue-triage agent: a tool schema with no target parameter, sanitized output, and an eval that checks what the agent did. Includes the code, the 27 adversarial runs, the mistake in my first leak check, and the commands to reproduce it.</p>
+    <div class="cta">
+      <a class="primary" href="writing/prompt-injection-triage-agent.html">Read the walkthrough →</a>
+    </div>
+  </article>
+
+  <h2 class="section-title">Research</h2>
+
+  <article class="card">
+    <div class="card-top">
+      <h3>Crypto Alpha Research</h3>
+      <span class="status-badge muted">Closed, negative result</span>
+    </div>
+    <p class="problem">"Before I put my own money behind a trading bot, I want proof the strategy has an edge."</p>
+    <div class="stack">
+      <span>Python</span><span>Kraken API</span><span>Backtesting</span><span>Monte Carlo permutation test</span>
+    </div>
+    <div class="evals">
+      <span>5 strategies backtested</span>
+      <span>10 research passes</span>
+      <span>43/43 tests passing</span>
+    </div>
+    <details>
+      <summary>What happened</summary>
+      <p class="highlight-text">I built the trading infrastructure first: Kraken market data, risk guardrails, a circuit breaker and an LLM decision layer. A Donchian breakout strategy reached production code, then failed a Monte Carlo permutation test against 1,000 scrambled versions of the same price data (p=0.16 against a 0.01 bar). No strategy I tested beat holding BTC, so I closed the project, funded nothing, and published the result.</p>
+    </details>
+    <div class="cta">
+      <a class="primary" href="https://github.com/rakeshsabbisetty2001/crypto-alpha-research" target="_blank" rel="noopener">Source ↗</a>
+    </div>
+  </article>
+
+  <h2 class="section-title">How I work with AI</h2>
+
+  <article class="card">
+    <p class="highlight-text">I use Claude Code every day. A stronger model plans and reviews, a faster one writes the code, and the review repeats until the reviewer has nothing left to flag. The line I hold is that a model's output does not count until an eval, a test or a real attack has checked it. Every project on this page reports measured numbers for that reason, and live runs have caught bugs that code review missed.</p>
   </article>
 
 </main>
